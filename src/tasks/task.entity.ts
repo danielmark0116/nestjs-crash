@@ -3,7 +3,7 @@ import { TaskStatus } from "./types/task.model";
 
 @Entity()
 export class Task extends BaseEntity {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn("increment")
   id: number;
 
   @Column()
@@ -14,4 +14,10 @@ export class Task extends BaseEntity {
 
   @Column({ default: TaskStatus.OPEN })
   taskStatus: TaskStatus;
+
+  @Column({ default: Date.now() })
+  createdAt: string;
+
+  @Column({ default: new Date().toLocaleString() })
+  dateString: string;
 }
